@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.FlowLayout;
 
 @SuppressWarnings("serial")
 public class CheckBoxItemEventEx extends JFrame implements ItemListener {
@@ -48,8 +49,9 @@ public class CheckBoxItemEventEx extends JFrame implements ItemListener {
 	}
 
 	private void initComponents() {
+		setTitle("ItemEvent 활용한 체크박스");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 205);
+		setBounds(100, 100, 407, 157);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,10 +64,10 @@ public class CheckBoxItemEventEx extends JFrame implements ItemListener {
 
 		JPanel pChkBoxes = new JPanel();
 		contentPane.add(pChkBoxes);
-		pChkBoxes.setLayout(new GridLayout(0, 3, 10, 0));
 
 		chkApple = new JCheckBox("사과");
 		chkApple.addItemListener(this);
+		pChkBoxes.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		pChkBoxes.add(chkApple);
 
 		chkPear = new JCheckBox("배");
