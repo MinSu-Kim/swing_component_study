@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.JComboBox;
 
 public class JListAndJComboEx extends JFrame implements ActionListener {
 
@@ -97,6 +99,40 @@ public class JListAndJComboEx extends JFrame implements ActionListener {
 		JPanel pJCombo = new JPanel();
 		pJCombo.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JComboBox", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		contentPane.add(pJCombo);
+		pJCombo.setLayout(new GridLayout(0, 2, 10, 0));
+		
+		JPanel subPjcombo1 = new JPanel();
+		pJCombo.add(subPjcombo1);
+		
+		String[] strArr1 = {"apple", "banana", "charrry"};
+		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(strArr1);
+		JComboBox<String> cmb1 = new JComboBox<>(model);
+		subPjcombo1.add(cmb1);
+		
+		String[] strArr2 = {"김보민", "우선미", "황경수", "이준민"};
+		JComboBox<String> cmb2 = new JComboBox<>();
+		
+		for(int i=0; i<strArr2.length; i++) {
+			cmb2.addItem(strArr2[i]);
+		}
+		
+		cmb2.setSelectedIndex(-1);
+
+		cmb2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String name = (String) cmb2.getSelectedItem();
+				int index = cmb2.getSelectedIndex();
+				JOptionPane.showMessageDialog(null, index + "번째 선택된 이름 " + name);
+				
+			}
+		});
+		
+		subPjcombo1.add(cmb2);
+		
+		
+		JPanel subPjcombo2 = new JPanel();
+		pJCombo.add(subPjcombo2);
 	}
 
 	private ImageIcon[] getImgIcons() {
