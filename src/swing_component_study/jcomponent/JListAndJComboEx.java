@@ -31,12 +31,28 @@ public class JListAndJComboEx extends JFrame implements ActionListener {
 	private JTextField tfName;
 	private JList<String> listJListName;
 	private List<String> listArrayListNames;
+	private String imgPath;
+	private JComboBox<String> comboBox;
+	private JLabel lblImg;
+	private ImageIcon[] imgIcons;
 
 	public JListAndJComboEx() {
+		imgPath = System.getProperty("user.dir") + "\\images\\";
+		
 		listArrayListNames = new ArrayList<>();
 		listArrayListNames.add("김보민");
 		listArrayListNames.add("황경수");
 		listArrayListNames.add("우선미");
+		
+		imgIcons = new ImageIcon[] {
+				new ImageIcon(imgPath + "lyu.jpg"),
+				new ImageIcon(imgPath + "\\fruits\\apple.jpg"),
+				new ImageIcon(imgPath + "\\fruits\\banana.jpg"),
+				new ImageIcon(imgPath + "\\fruits\\kiwi.jpg"),
+				new ImageIcon(imgPath + "\\fruits\\mango.jpg")
+		};
+		
+		
 		
 		initComponents();
 	}
@@ -133,10 +149,26 @@ public class JListAndJComboEx extends JFrame implements ActionListener {
 		
 		JPanel subPjcombo2 = new JPanel();
 		pJCombo.add(subPjcombo2);
+		subPjcombo2.setLayout(new GridLayout(0, 2, 10, 0));
+		
+		JPanel pCmbImg = new JPanel();
+		subPjcombo2.add(pCmbImg);
+		
+		String[] strNames = {"이유영", "사과", "바나나", "키위", "망고"};
+		DefaultComboBoxModel<String> nameModel = new DefaultComboBoxModel<>(strNames);
+		comboBox = new JComboBox<>(nameModel);
+
+		comboBox.setSelectedIndex(-1);
+		pCmbImg.add(comboBox);
+		
+		lblImg = new JLabel();
+		subPjcombo2.add(lblImg);
+		
+		comboBox.addActionListener(this);
 	}
 
 	private ImageIcon[] getImgIcons() {
-		String imgPath = System.getProperty("user.dir") + "\\images\\";
+		
 		ImageIcon[] icons = new ImageIcon[] {
 				new ImageIcon(imgPath + "icon1.png"),
 				new ImageIcon(imgPath + "icon2.png"),
@@ -151,6 +183,9 @@ public class JListAndJComboEx extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == comboBox) {
+			do_comboBox_actionPerformed(e);
+		}
 		if (e.getSource() == tfName) {
 			do_tfName_actionPerformed(e);
 		}
@@ -160,5 +195,10 @@ public class JListAndJComboEx extends JFrame implements ActionListener {
 		listJListName.setListData(new Vector<>(listArrayListNames));
 		tfName.setText("");
 		tfName.requestFocus();
+	}
+	
+	protected void do_comboBox_actionPerformed(ActionEvent e) {
+		int index = comboBox.getSelectedIndex();
+		lblImg.setIcon(imgIcons[index]);
 	}
 }
