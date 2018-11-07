@@ -28,28 +28,12 @@ public class RadioBtnItemEventEx extends JFrame implements ItemListener {
 	private ImageIcon cherryIcon;
 	private JLabel lblImg;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RadioBtnItemEventEx frame = new RadioBtnItemEventEx();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public RadioBtnItemEventEx() {
 		initComponents();
 	}
-	
 	private void initComponents() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("ItemEvent 활용한 라디오 버튼");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 212, 258);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -88,17 +72,27 @@ public class RadioBtnItemEventEx extends JFrame implements ItemListener {
 	}
 
 	public void itemStateChanged(ItemEvent e) {
-		ImageIcon icon = null;
 		if (e.getSource() == rdbCherry) {
-			icon = cherryIcon;
+			do_rdbCherry_itemStateChanged(e);
 		}
 		if (e.getSource() == rdbPear) {
-			icon = pearIcon;
+			do_rdbPear_itemStateChanged(e);
 		}
 		if (e.getSource() == rdbApple) {
-			icon = appleIcon;
+			do_rdbApple_itemStateChanged(e);
 		}
-		lblImg.setIcon(icon);
+		
 	}
-
+	
+	protected void do_rdbApple_itemStateChanged(ItemEvent e) {
+		lblImg.setIcon(appleIcon);
+	}
+	
+	protected void do_rdbPear_itemStateChanged(ItemEvent e) {
+		lblImg.setIcon(pearIcon);
+	}
+	
+	protected void do_rdbCherry_itemStateChanged(ItemEvent e) {
+		lblImg.setIcon(cherryIcon);
+	}
 }

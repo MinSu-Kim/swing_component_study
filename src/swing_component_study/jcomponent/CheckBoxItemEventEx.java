@@ -25,32 +25,13 @@ public class CheckBoxItemEventEx extends JFrame implements ItemListener {
 	private int sum;
 	private JLabel lblSum;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CheckBoxItemEventEx frame = new CheckBoxItemEventEx();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public CheckBoxItemEventEx() {
 		initComponents();
 	}
 
 	private void initComponents() {
 		setTitle("ItemEvent 활용한 체크박스");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 407, 157);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
