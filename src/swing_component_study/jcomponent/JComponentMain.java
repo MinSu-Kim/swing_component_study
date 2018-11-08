@@ -22,6 +22,7 @@ public class JComponentMain extends JFrame implements ActionListener {
 	private JButton btn3;
 	private JButton btn2;
 	private JButton btn4;
+	private JButton btn8;
 
 	/**
 	 * Launch the application.
@@ -82,9 +83,16 @@ public class JComponentMain extends JFrame implements ActionListener {
 		btn7 = new JButton("RadioBtnItemEventEx");
 		btn7.addActionListener(this);
 		contentPane.add(btn7);
+		
+		btn8 = new JButton("JSliderEx");
+		btn8.addActionListener(this);
+		contentPane.add(btn8);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn8) {
+			showFrame(new JSliderChangeEventEx());
+		}
 
 		if (e.getSource() == btn1) {
 			showFrame(new CheckBoxItemEventEx());
