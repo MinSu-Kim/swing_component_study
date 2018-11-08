@@ -23,6 +23,9 @@ public class JComponentMain extends JFrame implements ActionListener {
 	private JButton btn2;
 	private JButton btn4;
 	private JButton btn8;
+	private JButton btn9;
+	private JButton btn10;
+	private JButton btn11;
 
 	/**
 	 * Launch the application.
@@ -87,12 +90,22 @@ public class JComponentMain extends JFrame implements ActionListener {
 		btn8 = new JButton("JSliderEx");
 		btn8.addActionListener(this);
 		contentPane.add(btn8);
+		
+		btn9 = new JButton("JOptionPane");
+		btn9.addActionListener(this);
+		contentPane.add(btn9);
+		
+		btn10 = new JButton("JFileChooserEx");
+		btn10.addActionListener(this);
+		contentPane.add(btn10);
+		
+		btn11 = new JButton("TabbedPaneEx");
+		btn11.addActionListener(this);
+		contentPane.add(btn11);
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btn8) {
-			showFrame(new JSliderChangeEventEx());
-		}
 
 		if (e.getSource() == btn1) {
 			showFrame(new CheckBoxItemEventEx());
@@ -120,7 +133,20 @@ public class JComponentMain extends JFrame implements ActionListener {
 			showFrame(new RadioBtnItemEventEx());
 		}
 
-
+		if (e.getSource() == btn8) {
+			showFrame(new JSliderChangeEventEx());
+		}
+		
+		if (e.getSource() == btn9) {
+			showFrame(new JOptionPaneEx());
+		}
+		
+		if (e.getSource() == btn10) {
+			showFrame(new JFileChooserEx());
+		}
+		if (e.getSource() == btn11) {
+			showFrame(new TabbedPaneEx());
+		}
 	}
 
 	private void showFrame(JFrame frame) {
